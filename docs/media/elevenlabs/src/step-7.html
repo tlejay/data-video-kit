@@ -1,0 +1,26 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+Thai:wght@500;600;700;800&display=block" rel="stylesheet"><link rel="stylesheet" href="style.css"><script src="callouts.js"></script></head><body><div class="mock">ภาพจำลอง / illustration, not a screenshot</div>
+<div class="head"><div class="n">7</div><div><h1>ใส่ลง .env แล้วเช็คแบบไม่เสียเครดิต</h1><p>Easiest: run /kiki-init in Claude Code. Or by hand in the terminal, from the kit folder:</p></div></div>
+<div class="term"><div class="bar"><span class="dot" style="background:#ff6159"></span><span class="dot" style="background:#ffbd2e"></span><span class="dot" style="background:#28c941"></span><span style="margin-left:14px;color:#8a96b0;font:600 14px Inter">data-video-kit, terminal</span></div>
+<pre><span class="c"># 1) create .env (skip if it exists)</span>
+$ cp -n .env.example .env
+<span class="c"># 2) API key: typed hidden, never shown on screen or saved in shell history</span>
+<span id="k">$ read -rs K && python3 scripts/set-env.py ELEVENLABS_API_KEY "$K"; unset K</span>
+<span class="g">ELEVENLABS_API_KEY=(hidden) -> ~/data-video-kit/.env</span>
+<span class="c"># 3) voice ID (not secret)</span>
+<span id="v">$ python3 scripts/set-env.py ELEVENLABS_VOICE_ID abcd1234EXAMPLEvoice</span>
+<span class="g">ELEVENLABS_VOICE_ID=abcd1234EXAMPLEvoice -> ~/data-video-kit/.env</span>
+<span class="c"># 4) free check: credits left per key</span>
+<span id="q">$ python3 scripts/tts-quota.py</span>
+  key1   free     left    9,650 /   10,000  reset 05 Nov (in 23d)
+
+  total 9,650 chars left  =  ~12 clips at 750 chars
+  best single key 9,650 chars  <- a clip cannot span two keys
+<span class="c"># 5) cost of the example script, nothing is sent</span>
+<span id="d">$ python3 scripts/tts-clip.py --dir examples/korat-solar/script --dry-run</span>
+<span class="y">[tts] dry run: 7 clip(s), 620 chars, about 52 s, ~0.19 USD (check one key has room: scripts/tts-quota.py --need 620)</span></pre></div>
+<div class="co" data-for="k" style="left:900px;top:150px"><span class="k">1</span><div>วางคีย์แล้วกด Enter<small>จอจะไม่แสดงอะไร เป็นเรื่องปกติ</small></div></div>
+<div class="co" data-for="v" style="left:900px;top:290px"><span class="k">2</span><div>ใส่ Voice ID ของคุณ</div></div>
+<div class="co" data-for="q" style="left:900px;top:400px"><span class="k">3</span><div>เช็คเครดิตที่เหลือ<small>ฟรี ไม่กินเครดิต</small></div></div>
+<div class="co" data-for="d" style="left:960px;top:530px"><span class="k">4</span><div>ดูต้นทุนก่อนพากย์จริง</div></div>
+<div class="foot"><span>✅</span><div>If tts-quota shows your key with credits left, you are ready: <b>/data-video your-data.csv</b></div></div>
+</body></html>

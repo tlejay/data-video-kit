@@ -65,16 +65,25 @@ the whole pipeline with placeholder voice.
 
 Ask: Set up ElevenLabs now / Later (placeholder voice only). If now:
 
+- **No account or key yet?** Point the user to `docs/ELEVENLABS-SETUP.md` (illustrated, Thai
+  first): sign up, open https://elevenlabs.io/app/settings/api-keys, create a key restricted to
+  **Text to Speech: Access** and **User: Read** with an optional credit limit, copy it once,
+  then pick a Thai voice in https://elevenlabs.io/app/voice-library and Copy voice ID. Wait
+  for them to come back before continuing.
+
 - **API key: never ask the user to paste it into the chat, never print it, never commit it.**
   Run `python3 "$KIT/scripts/set-env.py" --has ELEVENLABS_API_KEY`; if it is unset, create
   `.env` from `.env.example` if needed (`cp -n .env.example .env`), then ask the user to open
-  `.env` in their editor and fill `ELEVENLABS_API_KEY=` (or `ELEVENLABS_API_KEYS=k1,k2,...`
+  `.env` in their editor and fill `ELEVENLABS_API_KEY=`, or run
+  `read -rs K && python3 scripts/set-env.py ELEVENLABS_API_KEY "$K"; unset K` themselves in a
+  terminal (hidden input, stays out of shell history) (or `ELEVENLABS_API_KEYS=k1,k2,...`
   for several free accounts; one clip always renders on one key). Wait, then check again
   with `--has` (it prints nothing). If the user pastes a key into the chat anyway, write it
   into `.env` with the Edit tool, do not repeat it in any message, and suggest rotating it
   later if the chat is shared.
 - **Voice ID** is not secret: ask for it (AskUserQuestion with an "I'll paste it" option),
-  explain any voice works (ElevenLabs > Voices > a voice > Copy voice ID), then
+  explain any voice works (Voices > My Voices > ⋯ > Copy voice ID, see step 6 of
+  `docs/ELEVENLABS-SETUP.md`), then
   `python3 "$KIT/scripts/set-env.py" ELEVENLABS_VOICE_ID <id>`.
 - Model and settings: keep the defaults (`eleven_v4`, stability 0.25, style 0.75, similarity
   0.75) unless they ask; point to `docs/VOICE.md`.

@@ -1,0 +1,36 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+Thai:wght@500;600;700;800&display=block" rel="stylesheet"><link rel="stylesheet" href="style.css"><script src="callouts.js"></script></head><body><div class="mock">ภาพจำลอง / illustration, not a screenshot</div>
+<div class="head"><div class="n">3</div><div><h1>ตั้งชื่อคีย์ และเปิดสิทธิ์แค่ 2 อย่าง</h1><p>Name the key and allow only Text to Speech + User (read). Optional credit limit.</p></div></div>
+<div class="win"><div class="bar"><span class="dot" style="background:#ff6159"></span><span class="dot" style="background:#ffbd2e"></span><span class="dot" style="background:#28c941"></span><div class="url">https://<b>elevenlabs.io/app/settings/api-keys</b></div></div>
+<div class="app" style="min-height:690px"><div class="side"><div class="logo">IIElevenLabs</div>
+<div class="nav"><i></i>Home</div><div class="nav " id="nav-voices"><i></i>Voices</div>
+<div class="nav sub " id="nav-explore">Explore</div><div class="nav sub " id="nav-myvoices">My Voices</div>
+<div class="nav"><i></i>Text to Speech</div><div class="nav"><i></i>Speech to Text</div><div class="nav"><i></i>Sound Effects</div>
+<div class="sep"></div>
+<div class="nav on" id="nav-dev"><i></i>Developers</div><div class="nav sub on" id="nav-keys">API Keys</div>
+<div class="nav"><i></i>Settings</div>
+<div class="sep"></div><div class="nav" style="font-size:14px"><i style="border-radius:50%;background:#c9d6ff"></i>My Name</div>
+</div>
+<div class="main"><h2>API Keys</h2></div></div>
+<div class="dim"></div>
+<div class="modal" style="left:300px;top:70px;width:560px">
+ <h3>Create API Key</h3>
+ <div class="field"><label>Name</label><div class="input" id="name">data-video-kit</div></div>
+ <div class="field" style="display:flex;justify-content:space-between;align-items:center"><label style="margin:0">Restrict key</label><span class="toggle"></span></div>
+ <div class="tbl" style="margin-top:10px">
+  <div class="tr"><span style="flex:1">Endpoint</span><span>Permission</span></div>
+  <div class="tr"><span style="flex:1;font-weight:700">Text to Speech</span><span class="seg" id="tts"><span>No access</span><span class="on">Access</span></span></div>
+  <div class="tr"><span style="flex:1">Speech to Speech</span><span class="seg"><span class="on">No access</span><span>Access</span></span></div>
+  <div class="tr"><span style="flex:1">Voices</span><span class="seg"><span class="on">No access</span><span>Read</span><span>Write</span></span></div>
+  <div class="tr"><span style="flex:1;font-weight:700">User</span><span class="seg" id="user"><span>No access</span><span class="on">Read</span><span>Write</span></span></div>
+  <div class="tr"><span style="flex:1">Everything else</span><span class="seg"><span class="on">No access</span></span></div>
+ </div>
+ <div class="field" style="display:flex;justify-content:space-between;align-items:center"><label style="margin:0">Credit limit (optional)</label><div class="input" id="limit" style="width:150px;text-align:right">2,000</div></div>
+ <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:18px"><span class="btn">Cancel</span><span class="btn dark" id="ok">Create</span></div>
+</div></div>
+<div class="co" data-for="name" style="left:900px;top:190px"><span class="k">1</span><div>ตั้งชื่อ เช่น data-video-kit</div></div>
+<div class="co" data-for="tts" style="left:930px;top:330px"><span class="k">2</span><div>Text to Speech = Access<small>ใช้สร้างเสียงบรรยาย</small></div></div>
+<div class="co" data-for="user" style="left:930px;top:470px"><span class="k">3</span><div>User = Read<small>ใช้เช็คเครดิตที่เหลือ (tts-quota.py)</small></div></div>
+<div class="co" data-for="limit" style="left:930px;top:600px"><span class="k">4</span><div>ไม่บังคับ: จำกัดเครดิตของคีย์<small>กันบั๊กเผาเครดิตหมด</small></div></div>
+<div class="co" data-for="ok" style="left:930px;top:720px"><span class="k">5</span><div>กด Create</div></div>
+<div class="foot"><span>🔒</span><div>The kit calls only <b>/v1/text-to-speech</b> and <b>/v1/user</b>. Everything else can stay at No access.</div></div>
+</body></html>

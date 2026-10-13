@@ -58,7 +58,8 @@ claude
 1. **Set up:** type `/kiki-init`. It checks and installs the prerequisites (macOS, Linux,
    WSL), links the skills into `~/.claude/skills`, sets your ElevenLabs key and voice in
    `.env` (never echoed, never committed), picks a default template and music mood, and runs
-   a free smoke test with a pass/fail line per step.
+   a free smoke test with a pass/fail line per step. New to ElevenLabs? The illustrated
+   [ElevenLabs setup guide](docs/ELEVENLABS-SETUP.md) shows where to get the API key and voice ID.
 2. **Try the free example:** `bash examples/korat-solar/run.sh --full` renders a complete
    video with placeholder narration. No API key needed.
 3. **Make your first video:** `/data-video your-data.csv`
@@ -111,6 +112,7 @@ python3 scripts/tts-quota.py --need 900            # does ONE key have room? (fr
 python3 scripts/tts-clip.py --dir work             # voice every tN.txt
 ```
 
+Step-by-step with pictures (Thai and English): [`docs/ELEVENLABS-SETUP.md`](docs/ELEVENLABS-SETUP.md).
 Settings, Thai pronunciation fixes, audio tags, caching, quota traps and the backup voice:
 [`docs/VOICE.md`](docs/VOICE.md) and [`docs/voice-audio-tags.md`](docs/voice-audio-tags.md).
 
@@ -125,7 +127,7 @@ Settings, Thai pronunciation fixes, audio tags, caching, quota traps and the bac
 | `templates/` | `line-cartoon`, `civic-poster` (full videos), `risograph-sample` (cover) |
 | `sfx/` | burst, whoosh, highlight, pop, end |
 | `examples/korat-solar/` | script, captions, facts with sources, and a one-command free render |
-| `docs/` | `PIPELINE.md`, `VOICE.md`, `voice-audio-tags.md` |
+| `docs/` | `PIPELINE.md`, `VOICE.md`, `ELEVENLABS-SETUP.md`, `voice-audio-tags.md` |
 
 Every script has `--help`. `.claude/skills/` links the skills so they also work when Claude
 Code runs inside this folder without installing anything.
@@ -145,6 +147,7 @@ Code runs inside this folder without installing anything.
 
 - **เริ่มต้น:** clone แล้วเปิด `claude` ในโฟลเดอร์ จากนั้นพิมพ์ `/kiki-init` ระบบจะเช็คและติดตั้งสิ่งที่ต้องใช้
   ตั้งค่าคีย์ ElevenLabs ใน `.env` (ไม่แสดงคีย์ ไม่ commit) แล้วทดสอบทั้งสายแบบไม่เสียเงิน
+- **สมัคร ElevenLabs และหา API key กับ Voice ID:** คู่มือภาพทีละขั้นภาษาไทย [`docs/ELEVENLABS-SETUP.md`](docs/ELEVENLABS-SETUP.md)
 - **ลองฟรีก่อน:** `bash examples/korat-solar/run.sh --full` เรนเดอร์คลิปตัวอย่างเต็มด้วยเสียงชั่วคราว (macOS `say`)
 - **ทำคลิปแรก:** `/data-video ไฟล์ของคุณ.csv` หรือแค่บอกหัวข้อ เช่น "อยากทำวิดีโอเรื่องข้าวในประเทศไทย" ระบบจะหาข้อมูลจากแหล่งทางการให้ก่อน พร้อมที่มาทุกตัวเลข
 - **หัวใจของสกิล:** ไม่ใช่การอ่านตาราง แต่คือการตีความข้อมูลจากมุมของคนดู คำตอบต้องมาภายใน 3 วินาทีแรก

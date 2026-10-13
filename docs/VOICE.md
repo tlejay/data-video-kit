@@ -17,6 +17,9 @@ rendering are local. So:
 
 ## Setup
 
+First time with ElevenLabs? [`ELEVENLABS-SETUP.md`](ELEVENLABS-SETUP.md) walks through the account,
+a restricted API key (Text to Speech + User read only) and copying a Thai voice ID, with pictures.
+
 Put these in `.env` at the repo root (copy `.env.example`; `.env` is git-ignored) or in your
 shell environment:
 
