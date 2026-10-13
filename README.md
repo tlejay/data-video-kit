@@ -50,7 +50,7 @@ Every scene of the solar video, from the template you can re-time with your own 
 You need [Claude Code](https://claude.com/claude-code), Python 3.9+, ffmpeg, and Playwright with Chromium.
 
 ```bash
-git clone https://github.com/<you>/data-video-kit.git
+git clone https://github.com/tlejay/data-video-kit.git
 cd data-video-kit
 claude
 ```
