@@ -1,0 +1,8 @@
+claim,value,unit,as_of,source,status
+"First commercial solar farm in Thailand (Solar Power Korat 1, Non Sung district, Nakhon Ratchasima)",6.1,MW,2010-04,https://mgronline.com/local/detail/9540000035535,verified
+"Nakhon Ratchasima solar farms (9 SPCG farms) ranked first in Thailand at the time",54,MW,2013,https://en.wikipedia.org/wiki/Solar_power_in_Thailand,verified (as of 2013)
+"North-east (Isan) is Thailand's highest solar-radiation region; Korat sits inside that zone",5.0-5.3,kWh/m2/day,national map,https://2e-building.dede.go.th,verified at region level (no province ranking)
+"Largest rooftop solar installation in Isan, a factory in Korat",20.96,MW,2024,scgnewschannel.com,verified
+"That rooftop expressed as football fields",16,fields,2024,"derived in the original research from the roof area; recompute before reuse",estimate
+"Payback of a 5 kW home rooftop system with net billing",6.1,years,2026,"180,000 THB cost / 29,734 THB per year saved+sold (4.5 kWh/kWp/day, 4.23 THB/kWh bought, 2.20 THB/kWh sold)",estimate
+"Net-billing buy-back price for household rooftop power",2.20,THB/kWh,2026,PEA / national energy policy announcement,verified

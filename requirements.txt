@@ -1,0 +1,3 @@
+# Python 3.9+. System tools: ffmpeg (with ffprobe). See README "Install".
+numpy>=1.21        # mv-music.py (procedural music)
+playwright>=1.40   # mv-render.py, template shoot/build previews; then: python3 -m playwright install chromium

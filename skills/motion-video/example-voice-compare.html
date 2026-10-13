@@ -1,0 +1,140 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--leaf:#C7F0D9;--lav:#E7DEFE;--pink:#FAD7E0;--deep:#5BAA80;--ink:#2A2A30;--bg:#FBFAF6;--wm:#7A7F86}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:'Noto Sans Thai',sans-serif;color:var(--ink)}
+#stage{position:absolute;inset:0;overflow:hidden}
+.abs{position:absolute;left:0;right:0;text-align:center}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.75}
+#grain{position:absolute;inset:0;background-image:radial-gradient(rgba(42,42,48,.05) 1px,transparent 1px);background-size:6px 6px}
+.chip{display:inline-block;padding:14px 34px;border-radius:999px;font-weight:800;font-size:44px;border:4px solid var(--ink);background:#fff;margin:0 8px}
+.big{font-weight:900;letter-spacing:-4px;line-height:.9}
+.num{font-family:'Space Grotesk',sans-serif;font-weight:700}
+#bars{position:absolute;left:90px;right:90px;top:820px;height:380px;display:flex;align-items:center;justify-content:space-between}
+#bars i{display:block;width:14px;border-radius:7px;background:var(--ink)}
+#cap{position:absolute;left:70px;right:70px;top:1290px;text-align:center;font-weight:800;font-size:86px;line-height:1.25}
+#nar{position:absolute;left:60px;right:60px;top:1590px;text-align:center}
+#nar span{display:inline-block;background:var(--ink);color:#fff;font-weight:600;font-size:46px;line-height:1.35;padding:14px 34px;border-radius:28px}
+#wm{position:absolute;right:48px;bottom:44px;font-size:30px;color:var(--wm);font-weight:600}
+#prog{position:absolute;left:90px;right:90px;top:1240px;height:10px;border-radius:5px;background:rgba(42,42,48,.12);overflow:hidden}
+#prog b{display:block;height:100%;width:0;background:var(--ink)}
+#flash{position:absolute;inset:0;background:var(--ink);opacity:0}
+#av{position:absolute;left:50%;top:330px;width:520px;height:520px;margin-left:-260px;border-radius:50%;overflow:hidden;border:10px solid #fff;box-shadow:0 30px 80px rgba(91,170,128,.35)}
+#av img{width:100%;height:100%;object-fit:cover}
+#ring{position:absolute;left:50%;top:330px;width:520px;height:520px;margin-left:-260px;border-radius:50%;border:6px solid var(--deep)}
+#card{position:absolute;left:80px;right:80px;top:330px;background:#fff;border:5px solid var(--ink);border-radius:48px;padding:56px 60px;box-shadow:16px 16px 0 var(--ink)}
+#card h2{font-family:'Space Grotesk',sans-serif;font-size:64px;margin-bottom:26px;line-height:1.1}
+#card h2 small{display:block;font-family:'Noto Sans Thai';font-size:36px;font-weight:600;color:var(--wm);margin-top:8px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-top:3px dashed rgba(42,42,48,.18);font-size:46px}
+.row .k{font-weight:600;color:#55575f}
+.row .v{font-family:'Space Grotesk','Noto Sans Thai';font-weight:700;font-size:52px}
+.tag{display:inline-block;font-size:38px;padding:6px 20px;border-radius:999px;border:3px solid var(--ink);margin-left:10px}
+</style></head><body><div id="stage">
+<div class="blob" id="b1" style="width:900px;height:900px;background:var(--leaf)"></div><div class="blob" id="b2" style="width:800px;height:800px;background:var(--lav)"></div><div class="blob" id="b3" style="width:600px;height:600px;background:var(--pink)"></div>
+<div id="grain"></div>
+<!-- A intro -->
+<div id="ring"></div><div id="av"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--leaf);font-size:260px">🎙️</div></div>
+<div class="abs" id="a1" style="top:930px;font-size:92px;font-weight:900;line-height:1.15">ลองเทียบ<br>เสียง AI</div>
+<div class="abs" id="a2" style="top:1210px"><span class="chip" style="background:var(--lav)">ElevenLabs</span><span class="chip num" style="background:var(--leaf)">v3 → v4</span></div>
+<!-- B config -->
+<div id="card"><h2>ElevenLabs config <small>ทั้งสองรอบเหมือนกัน</small></h2>
+<div class="row" id="r0"><span class="k">เสียง (Voice)</span><span class="v">Voice A</span></div>
+<div class="row" id="r1"><span class="k">โมเดล</span><span class="v">eleven_v3 <span style="color:var(--wm)">vs</span> <span style="color:var(--deep)">eleven_v4</span></span></div>
+<div class="row" id="r2"><span class="k">Stability (ความนิ่ง)</span><span class="v">0.25</span></div>
+<div class="row" id="r3"><span class="k">Style</span><span class="v">0.75</span></div>
+<div class="row" id="r4"><span class="k">Similarity</span><span class="v">0.75</span></div>
+<div class="row" id="r5"><span class="k">แท็กในประโยค</span><span class="v"><span class="tag" style="background:var(--pink)">[laughs]</span><span class="tag" style="background:var(--lav)">[whispers]</span></span></div>
+</div>
+<!-- segment -->
+<div class="abs" id="sTag" style="top:200px"><span class="chip" id="sTagT">ตัวเดิม</span></div>
+<div class="abs big num" id="sNum" style="top:300px;font-size:420px">v3</div>
+<div id="bars"></div>
+<div id="prog"><b id="progb"></b></div>
+<div id="cap"></div>
+<div class="abs" id="fx" style="top:1640px"><span class="chip" id="fxT" style="background:var(--pink)">😆 [laughs]</span></div>
+<!-- outro -->
+<div class="abs" id="o1" style="top:400px;font-size:96px;font-weight:900">ชอบเสียงไหน?</div>
+<div class="abs" id="o2" style="top:570px;font-size:64px;font-weight:600">คอมเมนต์ <b class="num">3</b> หรือ <b class="num" style="color:var(--deep)">4</b></div>
+<div class="abs big" id="o3" style="top:860px;font-size:150px">เราย้ายไป</div>
+<div class="abs big num" id="o4" style="top:1030px;font-size:330px;color:var(--deep)">v4</div>
+<div id="nar"><span id="narT"></span></div>
+<div id="flash"></div>
+<div id="wm">@your-channel</div>
+</div>
+<script>
+const ENV={"v3": {"env": [0.004, 0.005, 0.023, 0.04, 0.516, 0.769, 0.872, 0.694, 0.295, 0.405, 0.534, 0.666, 0.339, 0.129, 0.556, 1, 0.871, 0.787, 0.434, 0.105, 0.191, 0.39, 0.089, 0.005, 0.049, 0.974, 0.854, 0.686, 0.557, 0.521, 0.513, 0.514, 0.369, 0.259, 0.345, 0.314, 0.213, 0.101, 0.05, 0.004, 0.004, 0.011, 0.267, 0.265, 0.24, 0.17, 0.087, 0.057, 0.053, 0.213, 0.316, 0.149, 0.047, 0.127, 0.064, 0.015, 0.006, 0.002, 0.002, 0.01, 0.034, 0.067, 0.086, 0.073, 0.071, 0.062, 0.042, 0.034, 0.023, 0.01, 0.087, 0.499, 0.707, 0.513, 0.337, 0.555, 0.53, 0.133, 0.097, 0.25, 0.602, 0.213, 0.132, 0.132, 0.728, 0.737, 0.51, 0.098, 0.167, 0.239, 0.294, 0.3, 0.302, 0.311, 0.332, 0.335, 0.334, 0.296, 0.159, 0.081, 0.11, 0.53, 0.556, 0.318, 0.027, 0.124, 0.507, 0.765, 0.189, 0.017, 0.07, 0.42, 0.901, 0.809, 0.41, 0.277, 0.293, 0.344, 0.457, 0.48, 0.502, 0.466, 0.31, 0.266, 0.116, 0.107, 0.169, 0.632, 0.667, 0.533, 0.463, 0.283, 0.206, 0.114, 0.015, 0.004, 0.007, 0.008, 0.008, 0.01, 0.013, 0.013, 0.012, 0.011, 0.011, 0.008, 0.006, 0.004, 0.005, 0.172, 0.458, 0.524, 0.425, 0.412, 0.274, 0.042, 0.348, 0.594, 0.443, 0.616, 0.606, 0.204, 0.045, 0.217, 0.293, 0.461, 0.496, 0.415, 0.302, 0.247, 0.189, 0.072, 0.142, 0.461, 0.541, 0.393, 0.312, 0.322, 0.308, 0.291, 0.315, 0.301, 0.301, 0.314, 0.39, 0.405, 0.605, 0.529, 0.375, 0.333, 0.413, 0.413, 0.41, 0.409, 0.382, 0.418, 0.368, 0.316, 0.234, 0.1, 0.009, 0.003, 0.003, 0.003, 0.012, 0.054, 0.275, 0.162, 0.156, 0.253, 0.491, 0.663, 0.575, 0.292, 0.242, 0.252, 0.295, 0.387, 0.445, 0.304, 0.035, 0.2, 0.652, 0.667, 0.611, 0.573, 0.434, 0.386, 0.269, 0.123, 0.304, 0.3, 0.306, 0.319, 0.324, 0.33, 0.293, 0.232, 0.092, 0.013, 0.016, 0.02, 0.024, 0.025, 0.026, 0.018, 0.008, 0.003, 0.006, 0.19, 0.432, 0.82, 0.444, 0.335, 0.082, 0.086, 0.097, 0.173, 0.508, 0.663, 0.602, 0.422, 0.69, 0.719, 0.72, 0.654, 0.346, 0.032, 0.065, 0.286, 0.372, 0.172, 0.003, 0.41, 0.741, 0.467, 0.025, 0.003, 0.004, 0.099, 0.359, 0.344, 0.198, 0.154, 0.063, 0.119, 0.186, 0.054, 0.065, 0.211, 0.244, 0.271, 0.24, 0.062, 0.045, 0.181, 0.231, 0.109, 0.158, 0.269, 0.328, 0.301, 0.261, 0.214, 0.228, 0.217, 0.2, 0.185, 0.159, 0.122, 0.056, 0.005, 0.003, 0.003, 0.003, 0.002, 0.006, 0.008, 0.007, 0.002, 0.003, 0.001, 0.004, 0.005, 0.006, 0.004, 0.005, 0.006, 0.053, 0.102, 0.138, 0.117, 0.042, 0.013, 0.006, 0.052, 0.055, 0.099, 0.012, 0.009, 0.084, 0.113, 0.171, 0.171, 0.213, 0.202, 0.168, 0.178, 0.1, 0.016, 0.043, 0.221, 0.267, 0.255, 0.279, 0.262, 0.223, 0.212, 0.244, 0.183, 0.189, 0.24, 0.182, 0.18, 0.143, 0.059, 0.063, 0.007, 0.007, 0.027], "gaps": [1.93, 4.72, 6.77, 8.13, 10.65, 11.15]}, "v4": {"env": [0.006, 0.03, 0.058, 0.604, 0.793, 0.838, 0.791, 0.156, 0.172, 0.591, 0.65, 0.952, 0.44, 0.321, 0.487, 0.786, 0.801, 0.418, 0.131, 0.479, 0.353, 0.022, 0.008, 0.677, 0.898, 0.798, 0.779, 0.732, 0.713, 0.647, 0.468, 0.524, 0.42, 0.334, 0.234, 0.129, 0.323, 0.432, 0.304, 0.184, 0.108, 0.091, 0.047, 0.147, 0.116, 0.024, 0.006, 0.007, 0.016, 0.031, 0.039, 0.047, 0.05, 0.048, 0.046, 0.048, 0.047, 0.032, 0.015, 0.007, 0.008, 0.317, 0.746, 0.796, 0.518, 0.362, 0.651, 0.448, 0.199, 0.27, 0.5, 0.713, 0.169, 0.129, 0.269, 0.815, 0.704, 0.535, 0.402, 0.105, 0.231, 0.461, 0.55, 0.557, 0.533, 0.489, 0.5, 0.52, 0.555, 0.498, 0.375, 0.409, 0.372, 0.172, 0.07, 0.023, 0.003, 0.132, 0.249, 0.442, 0.801, 0.37, 0.081, 0.337, 0.448, 0.643, 0.18, 0.047, 0.195, 0.624, 0.92, 0.683, 0.445, 0.446, 0.445, 0.773, 0.662, 0.844, 0.71, 0.61, 0.384, 0.394, 0.363, 0.203, 0.389, 0.798, 0.931, 0.801, 0.524, 0.294, 0.192, 0.08, 0.013, 0.003, 0.003, 0.005, 0.004, 0.002, 0.002, 0.002, 0.003, 0.004, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.006, 0.005, 0.004, 0.006, 0.191, 0.744, 0.781, 0.56, 0.451, 0.091, 0.355, 0.726, 0.41, 0.611, 0.735, 0.453, 0.18, 0.317, 0.511, 0.665, 0.728, 0.633, 0.508, 0.415, 0.308, 0.178, 0.235, 0.537, 0.721, 0.662, 0.497, 0.549, 0.481, 0.459, 0.424, 0.367, 0.341, 0.479, 0.53, 0.441, 0.604, 0.599, 0.451, 0.53, 0.829, 0.809, 0.701, 0.67, 0.432, 0.326, 0.16, 0.035, 0.007, 0.004, 0.003, 0.002, 0.003, 0.003, 0.003, 0.007, 0.105, 0.286, 0.528, 0.284, 0.504, 0.893, 0.803, 0.438, 0.389, 0.429, 0.291, 0.503, 0.706, 0.734, 0.121, 0.159, 0.629, 0.741, 0.765, 0.727, 0.603, 0.461, 0.245, 0.412, 0.436, 0.49, 0.526, 0.489, 0.488, 0.52, 0.483, 0.197, 0.01, 0.014, 0.023, 0.027, 0.032, 0.036, 0.034, 0.031, 0.03, 0.016, 0.011, 0.25, 0.727, 0.917, 1, 0.361, 0.055, 0.101, 0.239, 0.46, 0.756, 0.479, 0.77, 0.748, 0.683, 0.753, 0.467, 0.03, 0.101, 0.2, 0.543, 0.463, 0.044, 0.054, 0.316, 0.931, 0.362, 0.06, 0.013, 0.004, 0.32, 0.535, 0.458, 0.397, 0.227, 0.162, 0.32, 0.173, 0.136, 0.364, 0.582, 0.334, 0.094, 0.091, 0.322, 0.44, 0.302, 0.318, 0.457, 0.403, 0.369, 0.376, 0.378, 0.356, 0.3, 0.138, 0.025, 0.005, 0.002, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.004, 0.145, 0.259, 0.278, 0.148, 0.088, 0.074, 0.031, 0.198, 0.205, 0.101, 0.091, 0.023, 0.293, 0.329, 0.117, 0.061, 0.023, 0.03, 0.067, 0.101, 0.06, 0.021, 0.015, 0.028, 0.171, 0.19, 0.05, 0.023, 0.023, 0.294, 0.185, 0.117, 0.173, 0.136, 0.209, 0.366, 0.303, 0.132, 0.06, 0.012, 0.005, 0.002, 0.0, 0.0, 0.0, 0.0, 0.0], "gaps": [1.77, 4.73, 6.78, 8.18, 10.45]}};
+const PH=["สวัสดีค่ะ ทุกคน","วันอาทิตย์แบบนี้\nได้พักบ้างหรือยัง","สรุปข่าว\nเช้านี้ให้แล้วนะ","ทุกอย่างเรียบร้อยดี","เหลืออีกแค่\nไม่กี่ขั้นตอน","แอบกระซิบ\nนิดนึงด้วยแหละ"];
+const GAPS={v3:[1.93,4.72,6.77,8.13,10.65],v4:[1.77,4.73,6.78,8.18,10.45]};
+const NAR=[ // [abs start, clip len, [[rel,text],...]]
+ [0.4,8.64,[[0,"สวัสดีค่ะ"],[2.03,"ลองเทียบเสียงพากย์ AI กันหน่อย"],[5.0,"ระหว่าง ElevenLabs v3 กับ v4 ที่เพิ่งออกใหม่"]]],
+ [9.4,12.16,[[0,"ใช้เสียงตัวเดียวกัน"],[1.98,"ค่าตั้งเดียวกันเป๊ะ"],[3.6,"ความนิ่ง 0.25"],[6.23,"สไตล์ 0.75"],[8.58,"แล้วแอบใส่แท็กหัวเราะ กับกระซิบ"],[10.9,"ไว้ในประโยคด้วยนะ"]]],
+ [22.0,3.2,[[0,"เริ่มจาก v3"],[1.5,"ตัวที่ใช้มาตลอด"]]],
+ [38.5,5.68,[[0,"ต่อไป v4 ตัวใหม่"],[1.87,"ลองฟังตอนหัวเราะ"],[2.87,"กับตอนกระซิบดูนะ"]]],
+ [57.3,5.76,[[0,"ชอบเสียงไหน"],[1.13,"คอมเมนต์ 3 หรือ 4 ได้เลย"],[3.18,"ส่วนเรา ย้ายไป v4 แล้ว"]]]];
+const T={A:0,B:9.2,v3Slam:21.8,v3A:25.6,v3Len:12.32,v4Slam:38.3,v4A:44.6,v4Len:12.24,outro:57.1,end:64.5};
+const N=56, bars=document.getElementById('bars'); for(let i=0;i<N;i++){bars.appendChild(document.createElement('i'))}
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const eo=x=>1-Math.pow(1-cl(x),3), eb=x=>{x=cl(x);const c=1.70158;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+function set(id,o,tr){const e=$(id);e.style.opacity=o;e.style.transform=tr||'none'}
+const ALL=['av','ring','a1','a2','card','sTag','sNum','bars','prog','cap','fx','o1','o2','o3','o4','nar'];
+window.render=function(t){
+  ALL.forEach(i=>$(i).style.opacity=0);
+  $('b1').style.left=(-200+Math.sin(t*.4)*120)+'px';$('b1').style.top=(-150+Math.cos(t*.3)*100)+'px';
+  $('b2').style.left=(400+Math.cos(t*.35)*140)+'px';$('b2').style.top=(1100+Math.sin(t*.25)*120)+'px';
+  $('b3').style.left=(500+Math.sin(t*.5)*100)+'px';$('b3').style.top=(500+Math.cos(t*.45)*140)+'px';
+  let fl=0; document.body.style.background='var(--bg)';
+  // narration subtitle
+  for(const [s,len,ch] of NAR){ const r=t-s; if(r>=-0.05&&r<len+0.25){ let txt=ch[0][1],cs=0; for(const [c,x] of ch){if(r>=c){txt=x;cs=c}}
+      $('narT').textContent=txt; const k=eo((r-cs)/.18); set('nar',k*(r>len?1-(r-len)/.25:1),`translateY(${(1-k)*24}px)`);} }
+  if(t<T.B){
+    const o=t>T.B-.4?1-(t-(T.B-.4))/.4:1;
+    const k=eb(t/.6); set('av',eo(t/.4)*o,`scale(${.6+.4*k})`); 
+    const pulse=1+.04*Math.sin(t*4); set('ring',.6*eo(t/.5)*o,`scale(${(.6+.4*k)*pulse*1.06})`);
+    set('a1',eo((t-2.2)/.35)*o,`translateY(${(1-eo((t-2.2)/.4))*60}px)`);
+    set('a2',eo((t-5.2)/.35)*o,`scale(${1.3-.3*eb((t-5.2)/.4)})`);
+  } else if(t<T.v3Slam){
+    const bt=t-T.B, r=t-9.4, o=t>T.v3Slam-.4?1-(t-(T.v3Slam-.4))/.4:1;
+    set('card',eo(bt/.4)*o,`translateY(${(1-eo(bt/.45))*120}px) rotate(${(1-eo(bt/.5))*-3}deg)`);
+    const rev=[0,0.3,3.6,6.23,6.6,8.58];
+    rev.forEach((rt,i)=>{const k=eo((r-rt)/.3); const e=$('r'+i); e.style.opacity=.15+.85*k; e.style.transform=`translateX(${(1-k)*40}px)`;
+      e.style.background = (r>=rt&&r<rt+1.4)?'rgba(199,240,217,.55)':'transparent'});
+  } else if(t<T.outro){
+    const isV4=t>=T.v4Slam, key=isV4?'v4':'v3', slam=isV4?T.v4Slam:T.v3Slam, a0=isV4?T.v4A:T.v3A, len=isV4?T.v4Len:T.v3Len;
+    const st=t-slam, at=t-a0;
+    if(Math.abs(t-T.v4Slam)<.12) fl=1-Math.abs(t-T.v4Slam)/.12;
+    document.body.style.background=isV4?'#F1FBF5':'var(--bg)';
+    $('sNum').textContent=key; $('sNum').style.color=isV4?'var(--deep)':'var(--ink)';
+    $('sTagT').textContent=isV4?'ตัวใหม่ ✨':'ตัวเดิม'; $('sTagT').style.background=isV4?'var(--leaf)':'var(--lav)';
+    const out=t>(a0+len+.15)? eo((t-(a0+len+.15))/.3):0;
+    set('sNum',eo(st/.25)*(1-out),`scale(${1.5-.5*eb(st/.35)})`);
+    set('sTag',eo((st-.2)/.3)*(1-out),`translateY(${(1-eo((st-.2)/.3))*-40}px)`);
+    const e=ENV[key].env, fi=Math.floor(at*30), amp=(at>=0&&fi<e.length)?e[fi]:0;
+    $('bars').style.opacity=eo((st-.3)/.3)*(1-out);
+    const col=isV4?'#5BAA80':'#2A2A30';
+    [...bars.children].forEach((b,i)=>{const d=Math.abs(i-(N-1)/2)/((N-1)/2); const idx=fi-Math.round(d*6);
+      const j=(at>=0&&idx>=0&&idx<e.length)?e[idx]:0;
+      const h=14+(j*(1-d*.55))*340*(.75+.25*Math.sin(i*1.7+t*9)); b.style.height=h+'px'; b.style.background=col; b.style.opacity=.35+.65*(1-d*.6)});
+    $('sNum').style.transform+=` translateY(${-amp*16}px)`;
+    $('prog').style.opacity=$('bars').style.opacity; $('progb').style.width=(cl(at/len)*100)+'%'; $('progb').style.background=col;
+    if(at<0){ $('cap').innerHTML='🎧 ฟังนะ...'; set('cap',eo((at+1.2)/.3)*.5,'none'); }
+    if(at>-.1&&at<len+.1){
+      const g=GAPS[key]; let p=0; while(p<g.length&&at>=g[p])p++;
+      const ps=p? g[p-1]:0, k=eo((at-ps)/.22);
+      $('cap').innerHTML=PH[p].replace('\n','<br>'); set('cap',k*(1-out),`translateY(${(1-k)*40}px) scale(${.96+.04*k})`);
+      $('cap').style.color = p==5?'#7A6BAF':'var(--ink)';
+      if(p==0&&at>.7){$('fxT').textContent='😆 [laughs]';$('fxT').style.background='var(--pink)';set('fx',eo((at-.7)/.2),`rotate(${-4+Math.sin(t*20)*3}deg) scale(${1+.08*Math.sin(t*14)})`)}
+      if(p==5){$('fxT').textContent='🤫 [whispers]';$('fxT').style.background='var(--lav)';set('fx',eo((at-ps)/.3),`translateY(${Math.sin(t*3)*6}px)`)}
+    }
+  } else {
+    const ot=t-T.outro;
+    if(ot<.12) fl=1-ot/.12;
+    set('o1',eo(ot/.3),`scale(${1.4-.4*eb(ot/.35)})`);
+    set('o2',eo((ot-1.3)/.3),`translateY(${(1-eo((ot-1.3)/.3))*50}px)`);
+    set('o3',eo((ot-3.3)/.3),`translateX(${(1-eo((ot-3.3)/.35))*-300}px)`);
+    set('o4',eo((ot-3.8)/.25),`scale(${1.8-.8*eb((ot-3.8)/.4)}) rotate(${-8*(1-eo((ot-3.8)/.45))}deg)`);
+  }
+  $('flash').style.opacity=fl*.9;
+};
+</script></body></html>

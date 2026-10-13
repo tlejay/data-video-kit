@@ -1,0 +1,28 @@
+{
+  "id": "eval-3",
+  "title": "นักเรียนโคราช 10 ปี — guess-then-reveal",
+  "story_shape": "guess-then-reveal",
+  "skills": [
+    "data-video"
+  ],
+  "query": "ได้ข้อมูลนักเรียนโคราชแยกระดับชั้น ปีการศึกษา 2558–2567 มาแล้ว อยากทำคลิปที่ให้คนดูลองเดาก่อนว่านักเรียนในจังหวัดเพิ่มหรือลดในช่วง 10 ปีที่ผ่านมา — แล้วค่อยเฉลย",
+  "files": [
+    "skills/data-video/evals/data/korat-school-enrollment.csv"
+  ],
+  "stop_at": "script_draft",
+  "expected_behavior": [
+    "hook_is_a_guess_prompt: The opening line (within 3 s) explicitly invites the viewer to guess — it must contain a question asking whether enrollment went up or down. Example pass: 'ลองเดาดูก่อน... 10 ปีที่แล้วกับตอนนี้ นักเรียนโคราชเพิ่มหรือลด?' Example fail: a BLUF that states the answer immediately at second 0 without inviting a guess.",
+    "answer_in_5s: The answer to the guess ('ลดลง') must land in the script by second 5. A cliffhanger that withholds the answer until after second 10 fails this check even if a guess was posed.",
+    "series_shape_differs: The draft names its story shape, and hook pattern, shape and pivot differ from the last two clips in references/series-log.md. The shape suggested by the brief is preferred but any shape that fits the data and differs passes. Repeating BLUF + a 'แต่' turn fails.",
+    "pivot_not_but: 'แต่' appears at most once in the full script. The structural pivot is the guess/reveal device, not 'แต่'. Pass only if 'แต่' count ≤ 1.",
+    "three_poster_proposals: Either proposes three frame-1 poster concepts (A/B/C) with buttons, or states that three frame-1 stills come for the editor to pick after the script ok and before any visual build. Starting a build without them fails.",
+    "script_in_code_fence: Script draft is in a code fence followed by recomputed facts and at least two buttons.",
+    "no_voicing_before_approval: No tts-clip.py call, no ElevenLabs command, no audio generation before the editor approves.",
+    "hero_number_count: At most 3 spoken numbers in the script (roughly 1 per 20 s in a 60 s video). Source-line captions are exempt.",
+    "total_decline_correct: Recomputed facts show total 2558 = 265,000 and total 2567 = 225,500, giving a decline of 39,500 students (−14.9%, acceptable range −14.5% to −15.3%). Any total for 2567 outside 225,000–226,000 is a fail.",
+    "primary_decline_correct: Primary school 2558 = 145,000, primary 2567 = 112,000, decline = 33,000 (−22.8%). Acceptable range: −22% to −24%.",
+    "vocational_growth_correct: Vocational 2558 = 32,000, vocational 2567 = 41,500, growth = 9,500 (+29.7%). Acceptable range: +28% to +31%.",
+    "countertrend_acknowledged: The script or recomputed facts note that vocational enrollment grew while overall enrollment fell. This countertrend must be present — it is the key insight the CSV contains.",
+    "claims_inside_evidence: Causes of enrollment decline (birth rate, migration, private schools) are offered as 'อาจสะท้อน' or as a data-fetch button. The CSV does not contain causes; asserting one as fact fails."
+  ]
+}

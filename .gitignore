@@ -1,0 +1,12 @@
+.env
+.tts/
+__pycache__/
+*.pyc
+.DS_Store
+examples/*/work/
+work/
+templates/*/preview/
+templates/*/contact.jpg
+templates/*/scene*.png
+templates/*/end*.png
+node_modules/

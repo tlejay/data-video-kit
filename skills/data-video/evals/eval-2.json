@@ -1,0 +1,27 @@
+{
+  "id": "eval-2",
+  "title": "การท่องเที่ยวโคราช ก่อน-หลัง COVID — before/after in time",
+  "story_shape": "before-after-bridge",
+  "skills": [
+    "data-video"
+  ],
+  "query": "มีข้อมูลนักท่องเที่ยวโคราช ทั้งปี 2562 (ก่อน COVID) กับปี 2567 (ล่าสุด) แยกรายเดือน อยากทำคลิปว่าการท่องเที่ยวฟื้นตัวมาแค่ไหนหลัง COVID ผ่านไปแล้ว 4 ปี — ใช้ข้อมูลนี้เลย ไม่ต้องดึงเพิ่ม",
+  "files": [
+    "skills/data-video/evals/data/korat-tourist-monthly.csv"
+  ],
+  "stop_at": "script_draft",
+  "expected_behavior": [
+    "hook_timing: The verdict of the video (how far recovery has reached) lands in the first 3 s of the script. A teaser-only opener ('การท่องเที่ยวโคราช...') without a concrete conclusion fails this check.",
+    "series_shape_differs: The draft names its story shape, and hook pattern, shape and pivot differ from the last two clips in references/series-log.md. The shape suggested by the brief is preferred but any shape that fits the data and differs passes. Repeating BLUF + a 'แต่' turn fails.",
+    "pivot_not_but: 'แต่' appears at most once in the entire script. The structural device is the time contrast (2562 vs 2567), not a 'แต่' turn. Pass only if 'แต่' count ≤ 1.",
+    "three_poster_proposals: Either proposes three frame-1 poster concepts (A/B/C) with buttons, or states that three frame-1 stills come for the editor to pick after the script ok and before any visual build. Starting a build without them fails.",
+    "script_in_code_fence: Script draft is in a code fence followed by recomputed facts and at least two buttons.",
+    "no_voicing_before_approval: No tts-clip.py call, no ElevenLabs command, no audio generation before the editor approves.",
+    "hero_number_count: At most 3 spoken numbers in the script. The source-line caption is exempt.",
+    "y2562_total_correct: Recomputed facts show 2562 total visitors = 2,101,000 (sum of all 12 monthly rows where year_be = 2562: 185000+195000+210000+175000+155000+148000+165000+172000+145000+158000+168000+225000). Any value outside 2,100,000–2,102,000 is a fail.",
+    "y2567_total_correct: Recomputed facts show 2567 total visitors = 1,982,000 (sum of all 12 monthly rows where year_be = 2567: 178000+188000+205000+168000+142000+138000+155000+160000+132000+148000+158000+210000). Any value outside 1,981,000–1,983,000 is a fail.",
+    "change_correct: Change = 1,982,000 − 2,101,000 = −119,000 visitors, which is −5.7% (acceptable range: −5.5% to −5.8%). If the agent rounds differently, accept ±0.2 percentage points.",
+    "revenue_direction_correct: If the agent mentions revenue, the direction must be negative: 2567 revenue (3,468 M฿) < 2562 revenue (3,656 M฿). A claim that revenue increased is a fail.",
+    "claims_inside_evidence: Any explanation of WHY tourism has not fully recovered is framed as 'อาจสะท้อน' or offered as a data-fetch button. The CSV does not contain causes; asserting a cause as fact fails this check."
+  ]
+}

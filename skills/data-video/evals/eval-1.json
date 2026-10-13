@@ -1,0 +1,29 @@
+{
+  "id": "eval-1",
+  "title": "อนามัยโคราชรายอำเภอ — ranking countdown",
+  "story_shape": "ranking countdown",
+  "skills": [
+    "data-video"
+  ],
+  "query": "มีข้อมูลอนามัยกับประชากรโคราชแยกรายอำเภออยู่ที่ไฟล์นี้ อยากทำวิดีโอสั้นๆ ดูว่าอำเภอไหนมีอนามัยดูแลคนเยอะที่สุดหน่อย ถ้าเจ็บป่วยกลางดึกในอำเภอนั้น อนามัยใกล้บ้านดูแลคนอยู่กี่คน?",
+  "files": [
+    "skills/data-video/evals/data/korat-clinic-districts.csv"
+  ],
+  "stop_at": "script_draft",
+  "expected_behavior": [
+    "hook_timing: Opening line (or first spoken question+answer pair) resolves within the first 3 s of the script. Counts as pass even if the shape is question-first, provided the answer lands by second 5.",
+    "question_answered_in_5s: If the opening carries a question (e.g. 'อำเภอไหนมีอนามัยน้อยที่สุด?'), the answer must appear in the script by the 5-second mark, not held as a cliffhanger past that point.",
+    "series_shape_differs: The draft names its story shape, and hook pattern, shape and pivot differ from the last two clips in references/series-log.md. The shape suggested by the brief is preferred but any shape that fits the data and differs passes. Repeating BLUF + a 'แต่' turn fails.",
+    "pivot_not_but: 'แต่' appears at most once in the entire script. The main structural turn is the rank reveal, not a 'แต่' contrast. The last two clips used 'แต่' as pivot.",
+    "three_poster_proposals: Either proposes three frame-1 poster concepts (A/B/C) with buttons, or states that three frame-1 stills come for the editor to pick after the script ok and before any visual build. Starting a build without them fails.",
+    "script_in_code_fence: The script draft is enclosed in a code fence (``` ... ```) and is immediately followed by a 'recomputed facts' section and at least two action buttons (e.g. ok / แก้ / ดึงข้อมูลเพิ่ม).",
+    "no_voicing_before_approval: The response contains no call to tts-clip.py, no ElevenLabs API command, and no instruction to generate audio. TTS runs only after the editor approves the script.",
+    "hero_number_count: The script contains at most 3 spoken numbers (Arabic or Thai numerals/words representing quantities or percentages). Count every distinct figure spoken aloud; figures in the source-line caption do not count.",
+    "worst_district_correct: (Only graded if the agent uses a per-head ratio after raising the population caveat; if it rightly declines the ratio, grade on whether the raw counts it cites match the CSV.) The recomputed facts section identifies วังน้ำเขียว as the district with the WORST health-center coverage: 45,000 ÷ 3 = 15,000 คน/แห่ง. Any other value for วังน้ำเขียว is a fail.",
+    "second_worst_correct: (Only graded if the agent uses a per-head ratio after raising the population caveat; if it rightly declines the ratio, grade on whether the raw counts it cites match the CSV.) แก้งสนามนาง is identified as second worst: 42,000 ÷ 3 = 14,000 คน/แห่ง.",
+    "best_district_correct: (Only graded if the agent uses a per-head ratio after raising the population caveat; if it rightly declines the ratio, grade on whether the raw counts it cites match the CSV.) โนนไทย is identified as the district with the BEST coverage: 52,000 ÷ 7 = 7,429 คน/แห่ง (round to nearest integer). Any other value for โนนไทย is a fail.",
+    "full_distribution_shown: All 16 districts from the CSV appear at least once in the output (script, caption, or visual brief). The agent must not show only the top/bottom 5.",
+    "claims_inside_evidence: No claim is made about districts, populations, or rankings that cannot be directly computed from the supplied CSV. Any reference to causes (e.g. why coverage is low) is qualified with 'อาจสะท้อน' or offered as a button to fetch supporting data.",
+    "population_caveat: Before building a per-head ratio, the agent asks what the 'population' column counts (registered residents in ทะเบียนบ้าน vs people actually living there) and states the caveat, per the skill's data-pairing rule; it offers buttons (use with caveat on screen / fetch better data / drop the ratio) instead of silently presenting คน/แห่ง as fact. A draft that presents the ratio with no caveat fails this item."
+  ]
+}
