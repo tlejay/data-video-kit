@@ -1,6 +1,6 @@
 ---
 name: data-video
-description: Turn raw data (a sheet, CSV, list, stats, survey, sales log) into a short narrated vertical video that tells a story the viewer cares about, not a reading of the table. Finds the angle, writes the script, voices it, mixes music and effects, briefs the visuals, renders through the motion-video skill. Trigger - "make a video from this data", "turn this CSV into a clip", "data video", "ทำวิดีโอจากข้อมูล", "เอาข้อมูลนี้ไปทำคลิป", a brief plus a sheet/CSV, /data-video.
+description: Turn raw data (a sheet, CSV, list, stats, survey, sales log) into a short narrated vertical video that tells a story the viewer cares about, not a reading of the table. Finds the angle, writes the script, voices it, mixes music and effects, briefs the visuals, renders through the motion-video skill. Trigger - "make a video from this data", "turn this CSV into a clip", "data video", "ทำวิดีโอจากข้อมูล", "เอาข้อมูลนี้ไปทำคลิป", a brief plus a sheet/CSV, or just a topic ("make a video about rice in Thailand", "อยากทำวิดีโอเรื่อง..."), /data-video.
 allowed-tools: Bash Read Write Edit AskUserQuestion Agent
 ---
 
@@ -56,6 +56,13 @@ A video takes about an hour of wall time and the editor keeps sending other work
   something to show.
 
 ## 1. Understand the data before having ideas
+
+**Only a topic, no data?** ("ทำวิดีโอเรื่องข้าวในประเทศไทย") Start with research: split the topic
+into 3 parallel research briefs (headline numbers / why it is like this / what it means for the
+viewer), each must return figures with a source URL, a date and the licence, from official or
+primary sources first (`references/data-sources.md`). Put the findings in `research/*.md`, show
+the editor the 5 strongest facts with their sources, then continue from here as if the data had
+been given. Never put a number on screen that has no source.
 
 Get it into a file, clean it, find its shape. **Every number said on screen is recomputed by
 you**, never copied from the brief; when the brief and the data disagree, ask the editor
